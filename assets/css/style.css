@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.gate {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    transition: transform 3s ease-in-out, opacity 1s ease-in-out;
+    opacity: 0; /* Initially hidden */
+    display: none; /* Hide gates at start */
+}
+
+.left {
+    left: 0;
+    background: url('../images/gate-image-left.png') no-repeat center center;
+    transform-origin: left;
+}
+
+.right {
+    right: 0;
+    background: url('../images/gate-image-right.png') no-repeat center center;
+    transform-origin: right;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    font-family: 'Creepster', cursive;
+    color: red;
+    text-shadow: 5px 5px 10px black;
+    opacity: 0;
+    transition: opacity 2s ease-in-out 3s;
+    width: 100%;
+    font-size: 30px;
+}
+
+#enter-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: red;
+    color: white;
+    font-size: 1.5em;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+    transition: background 0.3s, transform 0.2s;
+}
+
+#enter-button:hover {
+    background: darkred;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+
+#audio-trigger {
+    cursor: pointer;
+    border-radius: 39px;
+    padding: 4px 12px;
+    font-size: 25px;
+    background: #8BC34A;
+    border: none;
+}
+
+.text-center{
+    text-align: center;
+}
