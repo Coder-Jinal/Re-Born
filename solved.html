@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Re Born</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    video#bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      background-size: cover;
+    }
+    body {
+      background-color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 4px #000;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+    .celebration {
+      font-size: 2.5rem;
+      color: #ffdc00;
+      animation: celebration 3s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+    .btn-restart {
+      margin-top: 30px;
+      padding: 10px 25px;
+      font-size: 1.5rem;
+      background-color: #F44336;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      border-radius: 50px;
+    }
+    .btn-restart:hover {
+      background-color: #cb1508;
+    }
+    @keyframes celebration {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Video -->
+  <video id="bgVideo" autoplay muted loop>
+    <source src="assets/videos/solved.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <h1>Noble soul—you have transcended mortal bounds and embraced eternal rebirth!</h1>
+  <div class="celebration">
+    May your spirit now soar in boundless, radiant freedom
+  </div>
+  <button class="btn-restart" onclick="restartGame()">Salvation to Another Soul</button>
+
+  <script>
+    // Check if the game is solved by verifying solvedChapters in localStorage
+    const solvedChapters = JSON.parse(localStorage.getItem('solvedChapters')) || [];
+    if (solvedChapters.length !== 3) {
+      // Redirect to home page if the game is not solved
+      window.location.href = 'index.html';
+    }
+    
+    function restartGame() {
+      if (confirm('Are you sure you want to restart the game?')) {
+        localStorage.removeItem('solvedChapters');
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
+</body>
+</html>
