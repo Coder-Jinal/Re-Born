@@ -40,6 +40,17 @@
       animation: celebration 3s ease-in-out infinite;
       margin-bottom: 20px;
     }
+    .btn-play {
+      margin-top: 30px;
+      padding: 10px 25px;
+      font-size: 1.5rem;
+      background-color: #0800f1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      border-radius: 50px;
+  }
     .btn-restart {
       margin-top: 30px;
       padding: 10px 25px;
@@ -77,6 +88,10 @@
   <div class="celebration">
     May your spirit now soar in boundless, radiant freedom
   </div>
+
+  <button onclick="playAudio()" class="btn-play">Listen to Epilogue</button>
+  <audio id="epilogueAudio" src="assets/audio/epilogue.mp3"></audio>
+
   <button class="btn-restart" onclick="restartGame()">Salvation to Another Soul</button>
 
   <script>
@@ -93,6 +108,11 @@
         window.location.href = 'index.html';
       }
     }
+    
+    function playAudio() {
+      document.getElementById("epilogueAudio").play();
+    }
   </script>
+  
 </body>
 </html>

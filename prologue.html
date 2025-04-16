@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Re Born</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-family: cursive;
+    }
+    .actions button{
+      background-color: #b1ff9b;
+      padding: 8px 10px;
+      border: none;
+      border-radius: 24px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Prologue</h1>
+    <p class="dialogue">
+      <span class="character">Elias:</span> “My name is Elias, and I've got an important job to do. I'm a spiritual medium, meaning that I can talk with the dead. I've been helping the remnants of people move on from this world, so their spirits can rest in peace. Today, I'm at Ridgefield Manor. There used to be a lot of people living in it, but that was a long time ago… I've heard some rumors of something haunting these halls, so I've come to help whoever is trapped here.”
+    </p>
+
+    <div class="actions">
+      <button onclick="playAudio()">Listen to Audio</button>
+      <button onclick="startPuzzle()">Solve Puzzle</button>
+    </div>
+
+    <audio id="prologueAudio" src="assets/audio/prologue1.mp3"></audio>
+  </div>
+
+  <script>
+    function playAudio() {
+      document.getElementById("prologueAudio").play();
+    }
+    function startPuzzle() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
