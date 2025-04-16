@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Re Born</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
   <style>
-    body{
-        font-family: 'Font Awesome 5 Free';
-        letter-spacing: 8px;
-        background: #000;
+    body {
+      font-family: 'Font Awesome 5 Free';
+      letter-spacing: 8px;
+      background: #000;
     }
-    a, a:hover{
-        text-decoration: none;
+    a, a:hover {
+      text-decoration: none;
     }
-    h1{
-        padding: 0;
-        margin: 0;
+    h1 {
+      padding: 0;
+      margin: 0;
     }
-    header{
-        padding: 15px 10px;
-        background: #000;
-        color: #fff;
+    header {
+      padding: 15px 10px;
+      background: #000;
+      color: #fff;
     }
-    nav{
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        z-index: 9;
+    nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 9;
     }
-    main{
-        height: calc(100vh - 8rem);
+    main {
+      height: calc(100vh - 8rem);
     }
-
     body::before {
       content: "";
       position: absolute;
@@ -48,40 +48,33 @@
       opacity: 0.4;
       z-index: -1;
     }
-
-    nav ul{
-        list-style: none;
-        background: #000000;
-        padding: 8px 20px;
-        margin-bottom: 0;
-        display: flex;
-        justify-content: space-between;
+    nav ul {
+      list-style: none;
+      background: #000000;
+      padding: 8px 20px;
+      margin-bottom: 0;
+      display: flex;
+      justify-content: space-between;
     }
-    nav ul a{
-        color: #000;
-        background: #d8d8d8;
-        display: inline-block;
-        width: 45px;
-        height: 45px;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        border-radius: 30px;
+    nav ul a {
+      color: #000;
+      background: #d8d8d8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 30px;
     }
-    nav ul a:hover{
-        color: red;
-    }
-    .fa{
-        letter-spacing: 0px;
-    }
-    nav ul a .fa{
-        font-size: 25px;
+    nav ul a:hover {
+      color: red;
     }
     .chapter-container, .fragment-container {
-        position: relative;
+      position: relative;
       display: flex;
       justify-content: center;
       margin: 30px 0 70px 0;
+      flex-wrap: wrap;
     }
     .chapter, .fragment {
       width: 130px;
@@ -90,285 +83,271 @@
       background-size: cover;
       background-position: center;
       border-radius: 10px;
-      cursor: grab;
+      cursor: pointer;
       position: relative;
     }
-    .fragment{
-        box-shadow: 0px 3px 6px 5px #00BCD4;
+    .fragment {
+      box-shadow: 0px 3px 6px 5px #00BCD4;
     }
-    .chapter{
-        box-shadow: 0px 3px 5px 5px #ff3d00;
+    .chapter {
+      box-shadow: 0px 3px 5px 5px #ff3d00;
     }
     .solved {
-        box-shadow: 0px 3px 5px 5px #009006;
+      box-shadow: 0px 3px 5px 5px #009006;
     }
     .audio-btn {
-        position: absolute;
-        bottom: 5px;
-        left: 50%;
-        z-index: 10;
-        transform: translateX(-50%);
-        background: #ffe500;
-        border-radius: 30px;
-        width: 35px;
-        height: 35px;
-        border: none;
-        box-shadow: 0px 0px 4px 0px #766a00;
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffe500;
+      border-radius: 30px;
+      width: 35px;
+      height: 35px;
+      border: none;
+      box-shadow: 0px 0px 4px 0px #766a00;
     }
     #final-sequence {
       display: none;
       margin-top: 40px;
     }
-    #final-chapters{
-        margin: 0;
+    .btn-green {
+      background: #b0ff53;
+      padding: 8px 14px;
+      border: none;
+      letter-spacing: 4px;
+      box-shadow: 0px 0px 3px 0px #509203;
+      border-radius: 20px;
     }
-    .btn-fragment{
-        position: absolute;
-        bottom: 0;
-    }
-    .btn-green{
-        background: #b0ff53;
-        padding: 8px 14px;
-        border: none;
-        letter-spacing: 4px;
-        box-shadow: 0px 0px 3px 0px #509203;
-        border-radius: 20px;
+    .selected {
+      outline: 4px solid yellow;
+      box-shadow: 0px 0px 10px 3px #ffe500;
     }
     @media (max-width: 600px) {
-        body::before {
+      body::before {
         background-image: url('assets/images/bg-mob.gif');
         opacity: 0.2;
-        }
-        .chapter, .fragment {
-            width: 100px;
-            height: 150px;
-            margin: 10px;
-        }
-        #final-sequence h2{
-            font-size: 20px;
-        }
+      }
+      .chapter, .fragment {
+        width: 100px;
+        height: 150px;
+      }
     }
   </style>
 </head>
 <body>
-    <header class="text-center">
-        <h1 class="logo">Re Born</h1>
-    </header>
+  <header class="text-center">
+    <h1 class="logo">Re Born</h1>
+  </header>
 
-    <nav>
-        <ul>
-            <li>
-                <a href="javascript:;" id="back-button">
-                    <i class="fa fa-home"></i>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:;" id="restart">
-                    <i class="fa fa-refresh"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
+  <nav>
+    <ul>
+      <li><a href="javascript:;" id="back-button"><i class="fa fa-home"></i></a></li>
+      <li><a href="javascript:;" id="restart"><i class="fa fa-refresh"></i></a></li>
+    </ul>
+  </nav>
 
-    <main>
-        <div class="container-fluid text-center">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="chapter-container" class="chapter-container"></div>
-                    <div id="final-sequence">
-                        <h2>Arrange Final Chapter Sequence</h2>
-                        <div id="final-chapters" class="chapter-container"></div>
-                        <button class="btn-green mt-3" id="submit-final">Submit Final Sequence</button>
-                    </div>
-                </div>
-            </div>
+  <main>
+    <div class="container-fluid text-center">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="chapter-container" class="chapter-container"></div>
+          <div id="final-sequence">
+            <h2>Arrange Final Chapter Sequence</h2>
+            <div id="final-chapters" class="chapter-container"></div>
+            <button class="btn-green mt-3" id="submit-final">Submit Final Sequence</button>
+          </div>
         </div>
-    </main>
-    
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-
-<script>
-const chapters = [
-  { id: 1, image: 'assets/images/chapter1.jpg' },
-  { id: 2, image: 'assets/images/chapter2.jpg' },
-  { id: 3, image: 'assets/images/chapter3.jpg' }
-];
-
-let currentAudio = null; // Keep track of the currently playing audio
-let currentAudioBtn = null; // Keep track of the currently playing button
-
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
-
-function renderChapters() {
-  const solvedChapters = JSON.parse(localStorage.getItem('solvedChapters')) || [];
-  const shuffled = shuffle([...chapters]);
-  $('#chapter-container').empty();
-
-  shuffled.forEach(ch => {
-    const isSolved = solvedChapters.includes(ch.id);
-    const chapterDiv = $(`  
-      <div class="chapter ${isSolved ? 'solved' : ''}" style="background-image: url('${ch.image}')" data-id="${ch.id}">
-        <button class="audio-btn"><i class="fa fa-play"></i></button>
       </div>
-    `);
-    chapterDiv.find('.audio-btn').click(e => {
-      e.stopPropagation();
-      playPauseAudio(`assets/audio/scene${ch.id}intro.mp3`, chapterDiv.find('.audio-btn'));
-    });
-    chapterDiv.click(() => openChapter(ch.id));
-    $('#chapter-container').append(chapterDiv);
-  });
+    </div>
+  </main>
 
-  if (solvedChapters.length === 3) {
-    $('#final-sequence').show();
-    renderFinalSequence();
-  }
-}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    const chapters = [
+      { id: 1, image: 'assets/images/chapter1.jpg', audio: 'assets/audio/scene1intro.mp3' },
+      { id: 2, image: 'assets/images/chapter2.jpg', audio: 'assets/audio/scene2intro.mp3' },
+      { id: 3, image: 'assets/images/chapter3.jpg', audio: 'assets/audio/scene3intro.mp3' }
+    ];
 
-function openChapter(chapterId) {
-  const urlParams = new URLSearchParams(window.location.search);
-  urlParams.set('chapter', chapterId);
-  window.history.pushState({}, '', '?' + urlParams.toString());
-  renderChapterPage(chapterId);
-}
+    const fragments = [
+      { chapterId: 1, id: 1, audio: 'assets/audio/scene1clue1.mp3' },
+      { chapterId: 1, id: 2, audio: 'assets/audio/scene1clue2.mp3' },
+      { chapterId: 1, id: 3, audio: 'assets/audio/scene1clue3.mp3' },
+      { chapterId: 2, id: 1, audio: 'assets/audio/scene2clue1.mp3' },
+      { chapterId: 2, id: 2, audio: 'assets/audio/scene2clue2.mp3' },
+      { chapterId: 2, id: 3, audio: 'assets/audio/scene2clue3.mp3' },
+      { chapterId: 3, id: 1, audio: 'assets/audio/scene3clue1.mp3' },
+      { chapterId: 3, id: 2, audio: 'assets/audio/scene3clue2.mp3' },
+      { chapterId: 3, id: 3, audio: 'assets/audio/scene3clue3.mp3' }
+    ];
 
-function renderChapterPage(chapterId) {
-  const container = $('<div class="fragment-container"></div>');
-  const fragments = shuffle([
-    { id: `ch${chapterId}f1`, order: 1, image: `assets/images/fragment${(chapterId - 1) * 3 + 1}.jpg` },
-    { id: `ch${chapterId}f2`, order: 2, image: `assets/images/fragment${(chapterId - 1) * 3 + 2}.jpg` },
-    { id: `ch${chapterId}f3`, order: 3, image: `assets/images/fragment${(chapterId - 1) * 3 + 3}.jpg` }
-  ]);
+    let currentAudio = null;
 
-  fragments.forEach(frag => {
-    const fragmentDiv = $(`  
-      <div class="fragment" style="background-image: url('${frag.image}')" data-order="${frag.order}">
-        <button class="audio-btn"><i class="fa fa-play"></i></button>
-      </div>
-    `);
-    fragmentDiv.find('.audio-btn').click(e => {
-      e.stopPropagation();
-      playPauseAudio(`assets/audio/scene${chapterId}clue${frag.order}.mp3`, fragmentDiv.find('.audio-btn'));
-    });
-    container.append(fragmentDiv);
-  });
-
-  container.sortable();
-
-  $('#chapter-container').empty().append(container);
-  $('#final-sequence').hide();
-
-  const submitButton = $('<button class="btn-fragment btn-green mt-3">Submit Chapter</button>');
-  submitButton.click(() => {
-    let solved = true;
-    container.children().each(function(index) {
-      if ($(this).data('order') !== index + 1) solved = false;
-    });
-
-    if (solved) {
-      alert('✅ Chapter Solved!');
-      const solvedChapters = JSON.parse(localStorage.getItem('solvedChapters')) || [];
-      if (!solvedChapters.includes(chapterId)) {
-        solvedChapters.push(chapterId);
-        localStorage.setItem('solvedChapters', JSON.stringify(solvedChapters));
+    function playAudio(src, button) {
+      if (currentAudio && currentAudio.src.includes(src)) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+        return;
       }
-
-        const urlParams = new URLSearchParams(window.location.search);
-        urlParams.delete('chapter');
-        window.history.pushState({}, '', '?' + urlParams.toString());
-        renderChapters();
-    } else {
-      alert('❌ Incorrect Order! Try Again.');
-    }
-
-    
-    
-  });
-
-  $('#chapter-container').append(submitButton);
-}
-
-function renderFinalSequence() {
-  const shuffled = shuffle([...chapters]);
-  $('#final-chapters').empty();
-  shuffled.forEach(ch => {
-    const chapter = $(`  
-      <div class="chapter" style="background-image: url('${ch.image}')" data-id="${ch.id}"></div>
-    `);
-    $('#final-chapters').append(chapter);
-  });
-  $('#final-chapters').sortable();
-}
-
-$('#submit-final').click(() => {
-  const correct = [1, 2, 3];
-  let success = true;
-  $('#final-chapters').children().each((i, el) => {
-    if (parseInt($(el).data('id')) !== correct[i]) success = false;
-  });
-  if (success) {
-    alert('🎉 Final Puzzle Solved!');
-    window.location.href = 'solved.html'; // Redirect to solved.html
-  } else {
-    alert('❌ Incorrect Order! Try Again.');
-  }
-});
-
-$('#restart').click(() => {
-  if (confirm('Are you sure you want to restart the game?')) {
-    localStorage.removeItem('solvedChapters');
-    location.reload();
-  }
-});
-
-$('#back-button').click(() => {
-  const urlParams = new URLSearchParams(window.location.search);
-  urlParams.delete('chapter');
-  window.history.pushState({}, '', '?' + urlParams.toString());
-  renderChapters();
-});
-
-function playPauseAudio(audioSrc, audioBtn) {
-  if (currentAudio && !currentAudio.paused) {
-    currentAudio.pause();
-    currentAudioBtn.html('<i class="fa fa-pause"></i>');
-  }
-
-  if (currentAudio && currentAudio.src === audioSrc) {
-    if (currentAudio.paused) {
+      if (currentAudio) currentAudio.pause();
+      currentAudio = new Audio(src);
       currentAudio.play();
-      audioBtn.html('<i class="fa fa-pause"></i>');
-    } else {
-      currentAudio.pause();
-      audioBtn.html('<i class="fa fa-pause"></i>');
     }
-  } else {
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudioBtn.html('<i class="fa fa-pause"></i>');
-    }
-    currentAudio = new Audio(audioSrc);
-    currentAudioBtn = audioBtn;
-    currentAudio.play();
-    audioBtn.html('<i class="fa fa-pause"></i>');
-  }
-}
 
-$(function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const chapterId = urlParams.get('chapter');
-  if (chapterId) {
-    renderChapterPage(chapterId);
-  } else {
-    renderChapters();
-  }
-});
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function renderChapters() {
+      const solvedChapters = JSON.parse(localStorage.getItem('solvedChapters')) || [];
+      const shuffled = shuffle([...chapters]);
+      $('#chapter-container').empty();
+
+      shuffled.forEach(ch => {
+        const isSolved = solvedChapters.includes(ch.id);
+        const chapterDiv = $(`
+          <div class="chapter ${isSolved ? 'solved' : ''}" style="background-image: url('${ch.image}')" data-id="${ch.id}">
+            <button class="audio-btn"><i class="fa fa-volume-up"></i></button>
+          </div>
+        `);
+        chapterDiv.find('.audio-btn').click((e) => {
+          e.stopPropagation();
+          playAudio(ch.audio);
+        });
+        chapterDiv.click(() => openChapter(ch.id));
+        $('#chapter-container').append(chapterDiv);
+      });
+
+      if (solvedChapters.length === 3) {
+        $('#final-sequence').show();
+        renderFinalSequence();
+      }
+    }
+
+    function openChapter(chapterId) {
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('chapter', chapterId);
+      window.location.search = urlParams.toString();
+    }
+
+    function renderChapterPage(chapterId) {
+      const container = $('<div class="fragment-container"></div>');
+      const chapterFragments = fragments.filter(f => f.chapterId === chapterId);
+      let selectedOrder = [];
+
+      chapterFragments.forEach((frag) => {
+        const fragmentDiv = $(`
+          <div class="fragment" style="background-image: url('assets/images/fragment${frag.id}.jpg')" data-order="${frag.id}">
+            <button class="audio-btn"><i class="fa fa-volume-up"></i></button>
+          </div>
+        `);
+        fragmentDiv.find('.audio-btn').click((e) => {
+          e.stopPropagation();
+          playAudio(frag.audio);
+        });
+        fragmentDiv.click(() => {
+          const order = fragmentDiv.data('order');
+          if (!selectedOrder.includes(order)) {
+            selectedOrder.push(order);
+            fragmentDiv.addClass('selected');
+          } else {
+            selectedOrder = selectedOrder.filter(o => o !== order);
+            fragmentDiv.removeClass('selected');
+          }
+        });
+        container.append(fragmentDiv);
+      });
+
+      $('#chapter-container').empty().append(container);
+      $('#final-sequence').hide();
+
+      const submitButton = $('<button class="btn-green mt-3">Submit Chapter</button>');
+      submitButton.click(() => {
+        const isCorrect = selectedOrder.join(',') === '1,2,3';
+        if (isCorrect) {
+          alert('✅ Chapter Solved!');
+          const solvedChapters = JSON.parse(localStorage.getItem('solvedChapters')) || [];
+          if (!solvedChapters.includes(chapterId)) {
+            solvedChapters.push(chapterId);
+            localStorage.setItem('solvedChapters', JSON.stringify(solvedChapters));
+          }
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.delete('chapter');
+          window.location.search = urlParams.toString();
+        } else {
+          alert('❌ Incorrect Order! Try Again.');
+        }
+      });
+
+      $('#chapter-container').append(submitButton);
+    }
+
+    function renderFinalSequence() {
+      const shuffled = shuffle([...chapters]);
+      $('#final-chapters').empty();
+      finalOrder = [];
+
+      shuffled.forEach(ch => {
+        const chapter = $(`
+          <div class="chapter" style="background-image: url('${ch.image}')" data-id="${ch.id}">
+            <button class="audio-btn"><i class="fa fa-volume-up"></i></button>
+          </div>
+        `);
+        chapter.find('.audio-btn').click((e) => {
+          e.stopPropagation();
+          playAudio(ch.audio);
+        });
+        chapter.click(() => selectFinalChapter(ch.id));
+        $('#final-chapters').append(chapter);
+      });
+    }
+
+    let finalOrder = [];
+    function selectFinalChapter(chapterId) {
+      if (!finalOrder.includes(chapterId)) {
+        finalOrder.push(chapterId);
+        $(`.chapter[data-id="${chapterId}"]`).addClass('selected');
+      }
+      if (finalOrder.length === 3) {
+        $('#submit-final').prop('disabled', false);
+      }
+    }
+
+    $('#submit-final').click(() => {
+      const correctOrder = [1, 2, 3];
+      if (JSON.stringify(finalOrder) === JSON.stringify(correctOrder)) {
+        alert('🎉 Final Puzzle Solved!');
+        window.location.href = 'solved.html';
+      } else {
+        alert('❌ Incorrect Order! Try Again.');
+      }
+    });
+
+    $('#restart').click(() => {
+      if (confirm('Are you sure you want to restart the game?')) {
+        localStorage.removeItem('solvedChapters');
+        location.reload();
+      }
+    });
+
+    $('#back-button').click(() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.delete('chapter');
+      window.location.search = urlParams.toString();
+    });
+
+    $(function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const chapterId = urlParams.get('chapter');
+      if (chapterId) {
+        renderChapterPage(parseInt(chapterId));
+      } else {
+        renderChapters();
+      }
+    });
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
